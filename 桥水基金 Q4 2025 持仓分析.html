@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)file:///Users/xiaobenzhi/.openclaw/workspace/bridgewater_holdings.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桥水基金 Q4 2025 持仓分析</title>
+    <script src="./桥水基金 Q4 2025 持仓分析_files/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; }
+        
+        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 24px 32px; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .fund-name { font-size: 24px; font-weight: bold; }
+        .header-right { text-align: right; color: #aaa; font-size: 14px; }
+        
+        .stats-bar { display: flex; gap: 40px; }
+        .stat-item { }
+        .stat-label { color: #888; font-size: 12px; text-transform: uppercase; }
+        .stat-value { font-size: 20px; font-weight: 600; }
+        
+        .main-content { display: flex; padding: 20px; gap: 20px; }
+        .left-panel { flex: 2; }
+        .right-panel { flex: 1; min-width: 360px; }
+        
+        .card { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 20px; }
+        .card-header { padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .card-title { font-size: 16px; font-weight: 600; color: #333; }
+        
+        .chart-row { display: flex; gap: 20px; }
+        .chart-col { flex: 1; }
+        .chart-box { height: 480px; padding: 16px; }
+        
+        .search-box { padding: 12px 20px; border-bottom: 1px solid #eee; }
+        .search-box input { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { padding: 12px 16px; text-align: left; font-size: 12px; color: #666; font-weight: 600; text-transform: uppercase; background: #f8f9fa; border-bottom: 2px solid #eee; }
+        td { padding: 14px 16px; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+        tr:hover { background: #f8f9fa; }
+        
+        .rank { font-weight: 600; color: #333; width: 50px; }
+        .stock-code { font-weight: 600; color: #1a1a2e; }
+        .stock-name { color: #666; }
+        .value { font-weight: 500; text-align: right; }
+        .pct { color: #888; text-align: right; }
+        .change-up { color: #e74c3c; }
+        .change-down { color: #27ae60; }
+        
+        .tabs { display: flex; gap: 8px; padding: 16px 20px; border-bottom: 1px solid #eee; }
+        .tab { padding: 8px 16px; border: none; background: #f0f0f0; border-radius: 6px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+        .tab:hover { background: #e0e0e0; }
+        .tab.active { background: #4a90d9; color: white; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .change-section { padding: 16px 20px; }
+        .change-section-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .change-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+        .change-item:last-child { border-bottom: none; }
+        
+        .change-desc { margin: 0 20px 20px; padding: 14px; background: #f8f9fa; border-radius: 8px; }
+        .change-desc-title { font-weight: 600; color: #333; margin-bottom: 8px; font-size: 13px; }
+        .change-desc-item { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; color: #666; }
+        
+        @media (max-width: 1200px) {
+            .main-content { flex-direction: column; }
+            .right-panel { min-width: auto; }
+            .chart-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="fund-name">🌉 桥水基金 Q4 2025 持仓</div>
+            <div class="header-right">
+                <div>报告期: 2025-12-31</div>
+                <div>数据来源: 13F-HR</div>
+            </div>
+        </div>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-label">总持仓市值</div>
+                <div class="stat-value">$27.4 亿美元</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">持股数量</div>
+                <div class="stat-value">1,040 只</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Q4 变化</div>
+                <div class="stat-value" style="color: #e74c3c;">+7.4%</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="left-panel">
+            <!-- 市值柱状图 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📊 市值：Q4 vs Q3 前20大持仓</span>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-col">
+                        <div class="chart-box">
+                            <canvas id="q4Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-col">
+                        <div class="chart-box">
+                            <canvas id="q3Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 股数柱状图 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📈 股数：Q4 vs Q3 前20大持仓 (万股)</span>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-col">
+                        <div class="chart-box">
+                            <canvas id="sharesQ4Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-col">
+                        <div class="chart-box">
+                            <canvas id="sharesQ3Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 持仓明细 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📋 持仓明细</span>
+                </div>
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(&#39;top50&#39;)">Top 50</button>
+                    <button class="tab" onclick="showTab(&#39;all&#39;)">全部持仓</button>
+                    <button class="tab" onclick="showTab(&#39;changes&#39;)">季度变化</button>
+                </div>
+                
+                <div id="top50" class="tab-content active">
+                    <table>
+                        <thead>
+                            <tr><th>#</th><th>代码</th><th>名称</th><th style="text-align:right">市值(亿$)</th><th style="text-align:right">占比</th><th style="text-align:right">股数(万)</th></tr>
+                        </thead>
+                        <tbody id="top50-body"><tr>
+                <td class="rank">1</td>
+                <td class="stock-code">SPY</td>
+                <td class="stock-name">标普500ETF-SPDR（SPY）</td>
+                <td class="value">30.4</td>
+                <td class="pct">11.00%</td>
+                <td class="pct">445.5万</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="stock-code">IVV</td>
+                <td class="stock-name">标普500ETF-iShares（IVV）</td>
+                <td class="value">28.7</td>
+                <td class="pct">11.00%</td>
+                <td class="pct">418.6万</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="stock-code">NVDA</td>
+                <td class="stock-name">英伟达</td>
+                <td class="value">7.2</td>
+                <td class="pct">2.60%</td>
+                <td class="pct">386.5万</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="stock-code">LRCX</td>
+                <td class="stock-name">泛林集团</td>
+                <td class="value">5.2</td>
+                <td class="pct">1.90%</td>
+                <td class="pct">304.2万</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="stock-code">CRM</td>
+                <td class="stock-name">赛富时</td>
+                <td class="value">5.1</td>
+                <td class="pct">1.90%</td>
+                <td class="pct">193.2万</td>
+            </tr><tr>
+                <td class="rank">6</td>
+                <td class="stock-code">GOOGL</td>
+                <td class="stock-name">谷歌A</td>
+                <td class="value">5.0</td>
+                <td class="pct">1.80%</td>
+                <td class="pct">159.1万</td>
+            </tr><tr>
+                <td class="rank">7</td>
+                <td class="stock-code">MSFT</td>
+                <td class="stock-name">微软</td>
+                <td class="value">4.8</td>
+                <td class="pct">1.70%</td>
+                <td class="pct">98.4万</td>
+            </tr><tr>
+                <td class="rank">8</td>
+                <td class="stock-code">AMZN</td>
+                <td class="stock-name">亚马逊</td>
+                <td class="value">4.5</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">194.8万</td>
+            </tr><tr>
+                <td class="rank">9</td>
+                <td class="stock-code">ADBE</td>
+                <td class="stock-name">Adobe</td>
+                <td class="value">4.5</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">127.5万</td>
+            </tr><tr>
+                <td class="rank">10</td>
+                <td class="stock-code">GEV</td>
+                <td class="stock-name">GE Vernova</td>
+                <td class="value">4.4</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">66.6万</td>
+            </tr><tr>
+                <td class="rank">11</td>
+                <td class="stock-code">BKNG</td>
+                <td class="stock-name">Booking Holdings</td>
+                <td class="value">4.3</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">8.1万</td>
+            </tr><tr>
+                <td class="rank">12</td>
+                <td class="stock-code">AVGO</td>
+                <td class="stock-name">博通</td>
+                <td class="value">4.0</td>
+                <td class="pct">1.50%</td>
+                <td class="pct">116.6万</td>
+            </tr><tr>
+                <td class="rank">13</td>
+                <td class="stock-code">ORCL</td>
+                <td class="stock-name">甲骨文</td>
+                <td class="value">3.7</td>
+                <td class="pct">1.30%</td>
+                <td class="pct">187.3万</td>
+            </tr><tr>
+                <td class="rank">14</td>
+                <td class="stock-code">AMD</td>
+                <td class="stock-name">超威半导体</td>
+                <td class="value">3.5</td>
+                <td class="pct">1.30%</td>
+                <td class="pct">165.7万</td>
+            </tr><tr>
+                <td class="rank">15</td>
+                <td class="stock-code">JNJ</td>
+                <td class="stock-name">强生</td>
+                <td class="value">2.7</td>
+                <td class="pct">1.00%</td>
+                <td class="pct">131.4万</td>
+            </tr><tr>
+                <td class="rank">16</td>
+                <td class="stock-code">MU</td>
+                <td class="stock-name">美光科技</td>
+                <td class="value">2.5</td>
+                <td class="pct">0.90%</td>
+                <td class="pct">89.0万</td>
+            </tr><tr>
+                <td class="rank">17</td>
+                <td class="stock-code">MA</td>
+                <td class="stock-name">万事达卡</td>
+                <td class="value">2.3</td>
+                <td class="pct">0.90%</td>
+                <td class="pct">40.9万</td>
+            </tr><tr>
+                <td class="rank">18</td>
+                <td class="stock-code">NEM</td>
+                <td class="stock-name">纽蒙特黄金</td>
+                <td class="value">2.3</td>
+                <td class="pct">0.80%</td>
+                <td class="pct">230.9万</td>
+            </tr><tr>
+                <td class="rank">19</td>
+                <td class="stock-code">WDAY</td>
+                <td class="stock-name">Workday</td>
+                <td class="value">2.1</td>
+                <td class="pct">0.80%</td>
+                <td class="pct">96.5万</td>
+            </tr><tr>
+                <td class="rank">20</td>
+                <td class="stock-code">NOW</td>
+                <td class="stock-name">现在服务</td>
+                <td class="value">2.1</td>
+                <td class="pct">0.70%</td>
+                <td class="pct">133.9万</td>
+            </tr></tbody>
+                    </table>
+                </div>
+                
+                <div id="all" class="tab-content">
+                    <div class="search-box">
+                        <input type="text" placeholder="搜索股票代码或名称..." oninput="filterAll(this.value)">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr><th>#</th><th>代码</th><th>名称</th><th style="text-align:right">市值(亿$)</th><th style="text-align:right">占比</th><th style="text-align:right">股数(万)</th></tr>
+                        </thead>
+                        <tbody id="all-body"><tr>
+                <td class="rank">1</td>
+                <td class="stock-code">SPY</td>
+                <td class="stock-name">标普500ETF-SPDR（SPY）</td>
+                <td class="value">30.4</td>
+                <td class="pct">11.00%</td>
+                <td class="pct">445.5万</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="stock-code">IVV</td>
+                <td class="stock-name">标普500ETF-iShares（IVV）</td>
+                <td class="value">28.7</td>
+                <td class="pct">11.00%</td>
+                <td class="pct">418.6万</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="stock-code">NVDA</td>
+                <td class="stock-name">英伟达</td>
+                <td class="value">7.2</td>
+                <td class="pct">2.60%</td>
+                <td class="pct">386.5万</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="stock-code">LRCX</td>
+                <td class="stock-name">泛林集团</td>
+                <td class="value">5.2</td>
+                <td class="pct">1.90%</td>
+                <td class="pct">304.2万</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="stock-code">CRM</td>
+                <td class="stock-name">赛富时</td>
+                <td class="value">5.1</td>
+                <td class="pct">1.90%</td>
+                <td class="pct">193.2万</td>
+            </tr><tr>
+                <td class="rank">6</td>
+                <td class="stock-code">GOOGL</td>
+                <td class="stock-name">谷歌A</td>
+                <td class="value">5.0</td>
+                <td class="pct">1.80%</td>
+                <td class="pct">159.1万</td>
+            </tr><tr>
+                <td class="rank">7</td>
+                <td class="stock-code">MSFT</td>
+                <td class="stock-name">微软</td>
+                <td class="value">4.8</td>
+                <td class="pct">1.70%</td>
+                <td class="pct">98.4万</td>
+            </tr><tr>
+                <td class="rank">8</td>
+                <td class="stock-code">AMZN</td>
+                <td class="stock-name">亚马逊</td>
+                <td class="value">4.5</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">194.8万</td>
+            </tr><tr>
+                <td class="rank">9</td>
+                <td class="stock-code">ADBE</td>
+                <td class="stock-name">Adobe</td>
+                <td class="value">4.5</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">127.5万</td>
+            </tr><tr>
+                <td class="rank">10</td>
+                <td class="stock-code">GEV</td>
+                <td class="stock-name">GE Vernova</td>
+                <td class="value">4.4</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">66.6万</td>
+            </tr><tr>
+                <td class="rank">11</td>
+                <td class="stock-code">BKNG</td>
+                <td class="stock-name">Booking Holdings</td>
+                <td class="value">4.3</td>
+                <td class="pct">1.60%</td>
+                <td class="pct">8.1万</td>
+            </tr><tr>
+                <td class="rank">12</td>
+                <td class="stock-code">AVGO</td>
+                <td class="stock-name">博通</td>
+                <td class="value">4.0</td>
+                <td class="pct">1.50%</td>
+                <td class="pct">116.6万</td>
+            </tr><tr>
+                <td class="rank">13</td>
+                <td class="stock-code">ORCL</td>
+                <td class="stock-name">甲骨文</td>
+                <td class="value">3.7</td>
+                <td class="pct">1.30%</td>
+                <td class="pct">187.3万</td>
+            </tr><tr>
+                <td class="rank">14</td>
+                <td class="stock-code">AMD</td>
+                <td class="stock-name">超威半导体</td>
+                <td class="value">3.5</td>
+                <td class="pct">1.30%</td>
+                <td class="pct">165.7万</td>
+            </tr><tr>
+                <td class="rank">15</td>
+                <td class="stock-code">JNJ</td>
+                <td class="stock-name">强生</td>
+                <td class="value">2.7</td>
+                <td class="pct">1.00%</td>
+                <td class="pct">131.4万</td>
+            </tr><tr>
+                <td class="rank">16</td>
+                <td class="stock-code">MU</td>
+                <td class="stock-name">美光科技</td>
+                <td class="value">2.5</td>
+                <td class="pct">0.90%</td>
+                <td class="pct">89.0万</td>
+            </tr><tr>
+                <td class="rank">17</td>
+                <td class="stock-code">MA</td>
+                <td class="stock-name">万事达卡</td>
+                <td class="value">2.3</td>
+                <td class="pct">0.90%</td>
+                <td class="pct">40.9万</td>
+            </tr><tr>
+                <td class="rank">18</td>
+                <td class="stock-code">NEM</td>
+                <td class="stock-name">纽蒙特黄金</td>
+                <td class="value">2.3</td>
+                <td class="pct">0.80%</td>
+                <td class="pct">230.9万</td>
+            </tr><tr>
+                <td class="rank">19</td>
+                <td class="stock-code">WDAY</td>
+                <td class="stock-name">Workday</td>
+                <td class="value">2.1</td>
+                <td class="pct">0.80%</td>
+                <td class="pct">96.5万</td>
+            </tr><tr>
+                <td class="rank">20</td>
+                <td class="stock-code">NOW</td>
+                <td class="stock-name">现在服务</td>
+                <td class="value">2.1</td>
+                <td class="pct">0.70%</td>
+                <td class="pct">133.9万</td>
+            </tr></tbody>
+                    </table>
+                </div>
+                
+                <div id="changes" class="tab-content">
+                    <div class="search-box">
+                        <input type="text" placeholder="搜索..." oninput="filterChanges(this.value)">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr><th>代码</th><th>名称</th><th style="text-align:right">Q4市值</th><th style="text-align:right">Q3市值</th><th style="text-align:right">市值变化</th><th style="text-align:right">股数变化</th></tr>
+                        </thead>
+                        <tbody id="changes-body"><tr>
+                <td class="stock-code">SPY</td>
+                <td class="stock-name">标普500ETF-SPDR（SPY）</td>
+                <td class="value">30.4</td>
+                <td class="pct">17.1</td>
+                <td class="value change-up">+13.3</td>
+                <td class="pct">+189.0万</td>
+            </tr><tr>
+                <td class="stock-code">MU</td>
+                <td class="stock-name">美光科技</td>
+                <td class="value">2.5</td>
+                <td class="pct">0.0</td>
+                <td class="value change-up">+2.5</td>
+                <td class="pct">+88.8万</td>
+            </tr><tr>
+                <td class="stock-code">NVDA</td>
+                <td class="stock-name">英伟达</td>
+                <td class="value">7.2</td>
+                <td class="pct">4.7</td>
+                <td class="value change-up">+2.5</td>
+                <td class="pct">+135.5万</td>
+            </tr><tr>
+                <td class="stock-code">ORCL</td>
+                <td class="stock-name">甲骨文</td>
+                <td class="value">3.7</td>
+                <td class="pct">1.1</td>
+                <td class="value change-up">+2.5</td>
+                <td class="pct">+146.7万</td>
+            </tr><tr>
+                <td class="stock-code">AMZN</td>
+                <td class="stock-name">亚马逊</td>
+                <td class="value">4.5</td>
+                <td class="pct">2.5</td>
+                <td class="value change-up">+2.0</td>
+                <td class="pct">+82.3万</td>
+            </tr><tr>
+                <td class="stock-code">NEM</td>
+                <td class="stock-name">纽蒙特黄金</td>
+                <td class="value">2.3</td>
+                <td class="pct">0.3</td>
+                <td class="value change-up">+2.0</td>
+                <td class="pct">+192.2万</td>
+            </tr><tr>
+                <td class="stock-code">IVV</td>
+                <td class="stock-name">标普500ETF-iShares（IVV）</td>
+                <td class="value">28.7</td>
+                <td class="pct">27.1</td>
+                <td class="value change-up">+1.6</td>
+                <td class="pct">+13.6万</td>
+            </tr><tr>
+                <td class="stock-code">GOOGL</td>
+                <td class="stock-name">谷歌A</td>
+                <td class="value">5.0</td>
+                <td class="pct">6.5</td>
+                <td class="value change-down">-1.5</td>
+                <td class="pct">-106.3万</td>
+            </tr><tr>
+                <td class="stock-code">AVGO</td>
+                <td class="stock-name">博通</td>
+                <td class="value">4.0</td>
+                <td class="pct">2.8</td>
+                <td class="value change-up">+1.2</td>
+                <td class="pct">+32.0万</td>
+            </tr><tr>
+                <td class="stock-code">MSFT</td>
+                <td class="stock-name">微软</td>
+                <td class="value">4.8</td>
+                <td class="pct">5.7</td>
+                <td class="value change-down">-0.9</td>
+                <td class="pct">-11.3万</td>
+            </tr><tr>
+                <td class="stock-code">NOW</td>
+                <td class="stock-name">现在服务</td>
+                <td class="value">2.1</td>
+                <td class="pct">2.8</td>
+                <td class="value change-down">-0.7</td>
+                <td class="pct">+103.7万</td>
+            </tr><tr>
+                <td class="stock-code">AMD</td>
+                <td class="stock-name">超威半导体</td>
+                <td class="value">3.5</td>
+                <td class="pct">2.9</td>
+                <td class="value change-up">+0.6</td>
+                <td class="pct">-13.8万</td>
+            </tr><tr>
+                <td class="stock-code">LRCX</td>
+                <td class="stock-name">泛林集团</td>
+                <td class="value">5.2</td>
+                <td class="pct">4.6</td>
+                <td class="value change-up">+0.6</td>
+                <td class="pct">-42.2万</td>
+            </tr><tr>
+                <td class="stock-code">JNJ</td>
+                <td class="stock-name">强生</td>
+                <td class="value">2.7</td>
+                <td class="pct">3.2</td>
+                <td class="value change-down">-0.5</td>
+                <td class="pct">-40.2万</td>
+            </tr><tr>
+                <td class="stock-code">WDAY</td>
+                <td class="stock-name">Workday</td>
+                <td class="value">2.1</td>
+                <td class="pct">2.5</td>
+                <td class="value change-down">-0.4</td>
+                <td class="pct">-7.5万</td>
+            </tr><tr>
+                <td class="stock-code">CRM</td>
+                <td class="stock-name">赛富时</td>
+                <td class="value">5.1</td>
+                <td class="pct">4.8</td>
+                <td class="value change-up">+0.4</td>
+                <td class="pct">-7.5万</td>
+            </tr><tr>
+                <td class="stock-code">GEV</td>
+                <td class="stock-name">GE Vernova</td>
+                <td class="value">4.4</td>
+                <td class="pct">4.0</td>
+                <td class="value change-up">+0.3</td>
+                <td class="pct">+1.5万</td>
+            </tr><tr>
+                <td class="stock-code">MA</td>
+                <td class="stock-name">万事达卡</td>
+                <td class="value">2.3</td>
+                <td class="pct">2.1</td>
+                <td class="value change-up">+0.3</td>
+                <td class="pct">+4.3万</td>
+            </tr><tr>
+                <td class="stock-code">BKNG</td>
+                <td class="stock-name">Booking Holdings</td>
+                <td class="value">4.3</td>
+                <td class="pct">4.2</td>
+                <td class="value change-up">+0.1</td>
+                <td class="pct">+0.3万</td>
+            </tr><tr>
+                <td class="stock-code">ADBE</td>
+                <td class="stock-name">Adobe</td>
+                <td class="value">4.5</td>
+                <td class="pct">4.5</td>
+                <td class="value change-up">+0.0</td>
+                <td class="pct">+1.2万</td>
+            </tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📈 季度持仓变动</span>
+                </div>
+                <div class="change-section">
+                    <div class="change-section-title" style="color:#e74c3c;">🔼 增持 Top 5</div>
+                    <div id="gain-list"><div class="change-item"><span>标普500ETF-SPDR（SPY）</span><span class="change-up">+$13.3亿</span></div><div class="change-item"><span>美光科技</span><span class="change-up">+$2.5亿</span></div><div class="change-item"><span>英伟达</span><span class="change-up">+$2.5亿</span></div><div class="change-item"><span>甲骨文</span><span class="change-up">+$2.5亿</span></div><div class="change-item"><span>亚马逊</span><span class="change-up">+$2.0亿</span></div></div>
+                </div>
+                <div class="change-section" style="border-top:1px solid #eee;">
+                    <div class="change-section-title" style="color:#27ae60;">🔽 减持 Top 5</div>
+                    <div id="loss-list"><div class="change-item"><span>谷歌A</span><span class="change-down">$-1.5亿</span></div><div class="change-item"><span>微软</span><span class="change-down">$-0.9亿</span></div><div class="change-item"><span>现在服务</span><span class="change-down">$-0.7亿</span></div><div class="change-item"><span>强生</span><span class="change-down">$-0.5亿</span></div><div class="change-item"><span>Workday</span><span class="change-down">$-0.4亿</span></div></div>
+                </div>
+                <div class="change-desc">
+                    <div class="change-desc-title">📝 变动说明</div>
+                    <div id="change-desc-list"><div class="change-desc-item"><span>标普500ETF-SPDR（SPY）</span><span>市值增持</span></div><div class="change-desc-item"><span>美光科技</span><span>小幅调整</span></div><div class="change-desc-item"><span>英伟达</span><span>增持股份</span></div><div class="change-desc-item"><span>甲骨文</span><span>增持股份</span></div><div class="change-desc-item"><span>亚马逊</span><span>小幅调整</span></div><div class="change-desc-item"><span>纽蒙特黄金</span><span>增持股份</span></div><div class="change-desc-item"><span>标普500ETF-iShares（IVV）</span><span>小幅调整</span></div><div class="change-desc-item"><span>谷歌A</span><span>减持股份</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const top20Data = [{"sym": "SPY", "name": "标普500ETF-SPDR（SPY）", "value_q4": 3038235000.0, "pct_q4": 11.0, "shares_q4": 4455413.0, "value_q3": 1708810000.0, "pct_q3": 6.7, "shares_q3": 2565088.0, "value_change": 1329425000.0, "shares_change": 1890325.0}, {"sym": "IVV", "name": "标普500ETF-iShares（IVV）", "value_q4": 2866877000.0, "pct_q4": 11.0, "shares_q4": 4185589.0, "value_q3": 2710196000.0, "pct_q3": 11.0, "shares_q3": 4049300.0, "value_change": 156681000.0, "shares_change": 136289.0}, {"sym": "NVDA", "name": "英伟达", "value_q4": 720860000.0, "pct_q4": 2.6, "shares_q4": 3865205.0, "value_q3": 468269000.0, "pct_q3": 1.8, "shares_q3": 2509751.0, "value_change": 252591000.0, "shares_change": 1355454.0}, {"sym": "LRCX", "name": "泛林集团", "value_q4": 520671000.0, "pct_q4": 1.9, "shares_q4": 3041661.0, "value_q3": 463826000.0, "pct_q3": 1.8, "shares_q3": 3463980.0, "value_change": 56845000.0, "shares_change": -422319.0}, {"sym": "CRM", "name": "赛富时", "value_q4": 511823000.0, "pct_q4": 1.9, "shares_q4": 1932066.0, "value_q3": 475665000.0, "pct_q3": 1.9, "shares_q3": 2007027.0, "value_change": 36158000.0, "shares_change": -74961.0}, {"sym": "GOOGL", "name": "谷歌A", "value_q4": 497928000.0, "pct_q4": 1.8, "shares_q4": 1590826.0, "value_q3": 645162000.0, "pct_q3": 2.5, "shares_q3": 2653896.0, "value_change": -147234000.0, "shares_change": -1063070.0}, {"sym": "MSFT", "name": "微软", "value_q4": 475926000.0, "pct_q4": 1.7, "shares_q4": 984091.0, "value_q3": 568278000.0, "pct_q3": 2.2, "shares_q3": 1097169.0, "value_change": -92352000.0, "shares_change": -113078.0}, {"sym": "AMZN", "name": "亚马逊", "value_q4": 449695000.0, "pct_q4": 1.6, "shares_q4": 1948254.0, "value_q3": 247011000.0, "pct_q3": 1.0, "shares_q3": 1124977.0, "value_change": 202684000.0, "shares_change": 823277.0}, {"sym": "ADBE", "name": "Adobe", "value_q4": 446256000.0, "pct_q4": 1.6, "shares_q4": 1275055.0, "value_q3": 445416000.0, "pct_q3": 1.7, "shares_q3": 1262696.0, "value_change": 840000.0, "shares_change": 12359.0}, {"sym": "GEV", "name": "GE Vernova", "value_q4": 435275000.0, "pct_q4": 1.6, "shares_q4": 665997.0, "value_q3": 400356000.0, "pct_q3": 1.6, "shares_q3": 651092.0, "value_change": 34919000.0, "shares_change": 14905.0}, {"sym": "BKNG", "name": "Booking Holdings", "value_q4": 431254000.0, "pct_q4": 1.6, "shares_q4": 80528.0, "value_q3": 419690000.0, "pct_q3": 1.6, "shares_q3": 77731.0, "value_change": 11564000.0, "shares_change": 2797.0}, {"sym": "AVGO", "name": "博通", "value_q4": 403462000.0, "pct_q4": 1.5, "shares_q4": 1165740.0, "value_q3": 278902000.0, "pct_q3": 1.1, "shares_q3": 845391.0, "value_change": 124560000.0, "shares_change": 320349.0}, {"sym": "ORCL", "name": "甲骨文", "value_q4": 365160000.0, "pct_q4": 1.3, "shares_q4": 1873481.0, "value_q3": 114261000.0, "pct_q3": 0.4, "shares_q3": 406279.0, "value_change": 250899000.0, "shares_change": 1467202.0}, {"sym": "AMD", "name": "超威半导体", "value_q4": 354761000.0, "pct_q4": 1.3, "shares_q4": 1656527.0, "value_q3": 290380000.0, "pct_q3": 1.1, "shares_q3": 1794801.0, "value_change": 64381000.0, "shares_change": -138274.0}, {"sym": "JNJ", "name": "强生", "value_q4": 271923000.0, "pct_q4": 1.0, "shares_q4": 1313958.0, "value_q3": 318139000.0, "pct_q3": 1.2, "shares_q3": 1715777.0, "value_change": -46216000.0, "shares_change": -401819.0}, {"sym": "MU", "name": "美光科技", "value_q4": 253912000.0, "pct_q4": 0.9, "shares_q4": 889640.0, "value_q3": 283000.0, "pct_q3": 0.0, "shares_q3": 1696.0, "value_change": 253629000.0, "shares_change": 887944.0}, {"sym": "MA", "name": "万事达卡", "value_q4": 233608000.0, "pct_q4": 0.9, "shares_q4": 409207.0, "value_q3": 208330000.0, "pct_q3": 0.8, "shares_q3": 366256.0, "value_change": 25278000.0, "shares_change": 42951.0}, {"sym": "NEM", "name": "纽蒙特黄金", "value_q4": 230544000.0, "pct_q4": 0.8, "shares_q4": 2308909.0, "value_q3": 32654000.0, "pct_q3": 0.1, "shares_q3": 387317.0, "value_change": 197890000.0, "shares_change": 1921592.0}, {"sym": "WDAY", "name": "Workday", "value_q4": 207287000.0, "pct_q4": 0.8, "shares_q4": 965117.0, "value_q3": 250463000.0, "pct_q3": 1.0, "shares_q3": 1040435.0, "value_change": -43176000.0, "shares_change": -75318.0}, {"sym": "NOW", "name": "现在服务", "value_q4": 205103000.0, "pct_q4": 0.7, "shares_q4": 1338885.0, "value_q3": 277918000.0, "pct_q3": 1.1, "shares_q3": 301993.0, "value_change": -72815000.0, "shares_change": 1036892.0}];
+        
+        const q4Labels = top20Data.map(d => d.name);
+        const q4Values = top20Data.map(d => (d.value_q4/1e8).toFixed(1));
+        const q4Pcts = top20Data.map(d => d.pct_q4);
+        
+        const q3Values = top20Data.map(d => (d.value_q3/1e8).toFixed(1));
+        const q3Pcts = top20Data.map(d => d.pct_q3);
+        
+        const q4Shares = top20Data.map(d => (d.shares_q4/1e4).toFixed(1));
+        const q3Shares = top20Data.map(d => (d.shares_q3/1e4).toFixed(1));
+        
+        // 市值 - Q4 柱状图
+        new Chart(document.getElementById("q4Chart"), {
+            type: "bar",
+            data: {
+                labels: q4Labels,
+                datasets: [{
+                    label: "市值(亿$)",
+                    data: q4Values,
+                    backgroundColor: "#4a90d9",
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: "y",
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: "Q4 2025", font: {size: 14, weight: "bold"} },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const idx = context.dataIndex;
+                                return context.raw + "亿$  占比: " + q4Pcts[idx] + "%";
+                            }
+                        }
+                    }
+                },
+                scales: { x: { title: {display: true, text: "亿美元"} } }
+            }
+        });
+        
+        // 市值 - Q3 柱状图
+        new Chart(document.getElementById("q3Chart"), {
+            type: "bar",
+            data: {
+                labels: q4Labels,
+                datasets: [{
+                    label: "市值(亿$)",
+                    data: q3Values,
+                    backgroundColor: "#95a5a6",
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: "y",
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: "Q3 2025", font: {size: 14, weight: "bold"} },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const idx = context.dataIndex;
+                                return context.raw + "亿$  占比: " + q3Pcts[idx] + "%";
+                            }
+                        }
+                    }
+                },
+                scales: { x: { title: {display: true, text: "亿美元"} } }
+            }
+        });
+        
+        // 股数 - Q4 柱状图 (万股)
+        new Chart(document.getElementById("sharesQ4Chart"), {
+            type: "bar",
+            data: {
+                labels: q4Labels,
+                datasets: [{
+                    label: "股数(万)",
+                    data: q4Shares,
+                    backgroundColor: "#4a90d9",
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: "y",
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: "Q4 2025", font: {size: 14, weight: "bold"} },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.raw + "万股";
+                            }
+                        }
+                    }
+                },
+                scales: { x: { title: {display: true, text: "万股"} } }
+            }
+        });
+        
+        // 股数 - Q3 柱状图 (万股)
+        new Chart(document.getElementById("sharesQ3Chart"), {
+            type: "bar",
+            data: {
+                labels: q4Labels,
+                datasets: [{
+                    label: "股数(万)",
+                    data: q3Shares,
+                    backgroundColor: "#95a5a6",
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: "y",
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: "Q3 2025", font: {size: 14, weight: "bold"} },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.raw + "万股";
+                            }
+                        }
+                    }
+                },
+                scales: { x: { title: {display: true, text: "万股"} } }
+            }
+        });
+        
+        // Top50表格
+        const top50Body = document.getElementById("top50-body");
+        top20Data.forEach((d, i) => {
+            top50Body.innerHTML += `<tr>
+                <td class="rank">${i+1}</td>
+                <td class="stock-code">${d.sym}</td>
+                <td class="stock-name">${d.name}</td>
+                <td class="value">${(d.value_q4/1e8).toFixed(1)}</td>
+                <td class="pct">${d.pct_q4.toFixed(2)}%</td>
+                <td class="pct">${(d.shares_q4/1e4).toFixed(1)}万</td>
+            </tr>`;
+        });
+        
+        // 全部持仓
+        const allBody = document.getElementById("all-body");
+        top20Data.forEach((d, i) => {
+            allBody.innerHTML += `<tr>
+                <td class="rank">${i+1}</td>
+                <td class="stock-code">${d.sym}</td>
+                <td class="stock-name">${d.name}</td>
+                <td class="value">${(d.value_q4/1e8).toFixed(1)}</td>
+                <td class="pct">${d.pct_q4.toFixed(2)}%</td>
+                <td class="pct">${(d.shares_q4/1e4).toFixed(1)}万</td>
+            </tr>`;
+        });
+        
+        // 变化表
+        const changesBody = document.getElementById("changes-body");
+        const sortedByChange = [...top20Data].sort((a,b) => Math.abs(b.value_change) - Math.abs(a.value_change));
+        sortedByChange.forEach(d => {
+            const vc = d.value_change;
+            const isUp = vc > 0;
+            changesBody.innerHTML += `<tr>
+                <td class="stock-code">${d.sym}</td>
+                <td class="stock-name">${d.name}</td>
+                <td class="value">${(d.value_q4/1e8).toFixed(1)}</td>
+                <td class="pct">${(d.value_q3/1e8).toFixed(1)}</td>
+                <td class="value ${isUp ? 'change-up' : 'change-down'}">${isUp?'+':''}${(vc/1e8).toFixed(1)}</td>
+                <td class="pct">${d.shares_change>0?'+':''}${(d.shares_change/1e4).toFixed(1)}万</td>
+            </tr>`;
+        });
+        
+        // 变化列表
+        const gains = top20Data.filter(d => d.value_change > 0).sort((a,b) => b.value_change - a.value_change).slice(0,5);
+        const losses = top20Data.filter(d => d.value_change < 0).sort((a,b) => a.value_change - b.value_change).slice(0,5);
+        
+        document.getElementById("gain-list").innerHTML = gains.map(d => 
+            `<div class="change-item"><span>${d.name}</span><span class="change-up">+$${(d.value_change/1e8).toFixed(1)}亿</span></div>`
+        ).join("");
+        document.getElementById("loss-list").innerHTML = losses.map(d => 
+            `<div class="change-item"><span>${d.name}</span><span class="change-down">$${(d.value_change/1e8).toFixed(1)}亿</span></div>`
+        ).join("");
+        
+        // 变动说明
+        const changeDescList = document.getElementById("change-desc-list");
+        const top5Changes = [...top20Data].sort((a,b) => Math.abs(b.value_change) - Math.abs(a.value_change)).slice(0,8);
+        changeDescList.innerHTML = top5Changes.map(d => {
+            const vc = d.value_change;
+            const sc = d.shares_change;
+            let desc = "";
+            if (vc > 1e9) desc = "市值增持";
+            else if (vc < -1e9) desc = "市值减持";
+            else if (sc > 1e6) desc = "增持股份";
+            else if (sc < -1e6) desc = "减持股份";
+            else desc = "小幅调整";
+            return `<div class="change-desc-item"><span>${d.name}</span><span>${desc}</span></div>`;
+        }).join("");
+        
+        function showTab(tabId) {
+            document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
+            event.target.classList.add("active");
+        }
+        
+        function filterAll(q) {
+            q = q.toLowerCase();
+            document.querySelectorAll("#all-body tr").forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+            });
+        }
+        
+        function filterChanges(q) {
+            q = q.toLowerCase();
+            document.querySelectorAll("#changes-body tr").forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+            });
+        }
+    </script>
+
+</body></html>
