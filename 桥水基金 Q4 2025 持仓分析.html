@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0070)file:///Users/xiaobenzhi/.openclaw/workspace/bridgewater_holdings.html -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>桥水基金 Q4 2025 持仓分析</title>
-    <script src="./桥水基金 Q4 2025 持仓分析_files/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; }
@@ -106,12 +106,12 @@
                 <div class="chart-row">
                     <div class="chart-col">
                         <div class="chart-box">
-                            <canvas id="q4Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                            <canvas id="q4Chart"></canvas>
                         </div>
                     </div>
                     <div class="chart-col">
                         <div class="chart-box">
-                            <canvas id="q3Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                            <canvas id="q3Chart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -125,12 +125,12 @@
                 <div class="chart-row">
                     <div class="chart-col">
                         <div class="chart-box">
-                            <canvas id="sharesQ4Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                            <canvas id="sharesQ4Chart"></canvas>
                         </div>
                     </div>
                     <div class="chart-col">
                         <div class="chart-box">
-                            <canvas id="sharesQ3Chart" width="836" height="896" style="display: block; box-sizing: border-box; height: 448px; width: 418px;"></canvas>
+                            <canvas id="sharesQ3Chart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -142,9 +142,9 @@
                     <span class="card-title">📋 持仓明细</span>
                 </div>
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab(&#39;top50&#39;)">Top 50</button>
-                    <button class="tab" onclick="showTab(&#39;all&#39;)">全部持仓</button>
-                    <button class="tab" onclick="showTab(&#39;changes&#39;)">季度变化</button>
+                    <button class="tab active" onclick="showTab('top50')">Top 50</button>
+                    <button class="tab" onclick="showTab('all')">全部持仓</button>
+                    <button class="tab" onclick="showTab('changes')">季度变化</button>
                 </div>
                 
                 <div id="top50" class="tab-content active">
@@ -152,147 +152,7 @@
                         <thead>
                             <tr><th>#</th><th>代码</th><th>名称</th><th style="text-align:right">市值(亿$)</th><th style="text-align:right">占比</th><th style="text-align:right">股数(万)</th></tr>
                         </thead>
-                        <tbody id="top50-body"><tr>
-                <td class="rank">1</td>
-                <td class="stock-code">SPY</td>
-                <td class="stock-name">标普500ETF-SPDR（SPY）</td>
-                <td class="value">30.4</td>
-                <td class="pct">11.00%</td>
-                <td class="pct">445.5万</td>
-            </tr><tr>
-                <td class="rank">2</td>
-                <td class="stock-code">IVV</td>
-                <td class="stock-name">标普500ETF-iShares（IVV）</td>
-                <td class="value">28.7</td>
-                <td class="pct">11.00%</td>
-                <td class="pct">418.6万</td>
-            </tr><tr>
-                <td class="rank">3</td>
-                <td class="stock-code">NVDA</td>
-                <td class="stock-name">英伟达</td>
-                <td class="value">7.2</td>
-                <td class="pct">2.60%</td>
-                <td class="pct">386.5万</td>
-            </tr><tr>
-                <td class="rank">4</td>
-                <td class="stock-code">LRCX</td>
-                <td class="stock-name">泛林集团</td>
-                <td class="value">5.2</td>
-                <td class="pct">1.90%</td>
-                <td class="pct">304.2万</td>
-            </tr><tr>
-                <td class="rank">5</td>
-                <td class="stock-code">CRM</td>
-                <td class="stock-name">赛富时</td>
-                <td class="value">5.1</td>
-                <td class="pct">1.90%</td>
-                <td class="pct">193.2万</td>
-            </tr><tr>
-                <td class="rank">6</td>
-                <td class="stock-code">GOOGL</td>
-                <td class="stock-name">谷歌A</td>
-                <td class="value">5.0</td>
-                <td class="pct">1.80%</td>
-                <td class="pct">159.1万</td>
-            </tr><tr>
-                <td class="rank">7</td>
-                <td class="stock-code">MSFT</td>
-                <td class="stock-name">微软</td>
-                <td class="value">4.8</td>
-                <td class="pct">1.70%</td>
-                <td class="pct">98.4万</td>
-            </tr><tr>
-                <td class="rank">8</td>
-                <td class="stock-code">AMZN</td>
-                <td class="stock-name">亚马逊</td>
-                <td class="value">4.5</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">194.8万</td>
-            </tr><tr>
-                <td class="rank">9</td>
-                <td class="stock-code">ADBE</td>
-                <td class="stock-name">Adobe</td>
-                <td class="value">4.5</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">127.5万</td>
-            </tr><tr>
-                <td class="rank">10</td>
-                <td class="stock-code">GEV</td>
-                <td class="stock-name">GE Vernova</td>
-                <td class="value">4.4</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">66.6万</td>
-            </tr><tr>
-                <td class="rank">11</td>
-                <td class="stock-code">BKNG</td>
-                <td class="stock-name">Booking Holdings</td>
-                <td class="value">4.3</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">8.1万</td>
-            </tr><tr>
-                <td class="rank">12</td>
-                <td class="stock-code">AVGO</td>
-                <td class="stock-name">博通</td>
-                <td class="value">4.0</td>
-                <td class="pct">1.50%</td>
-                <td class="pct">116.6万</td>
-            </tr><tr>
-                <td class="rank">13</td>
-                <td class="stock-code">ORCL</td>
-                <td class="stock-name">甲骨文</td>
-                <td class="value">3.7</td>
-                <td class="pct">1.30%</td>
-                <td class="pct">187.3万</td>
-            </tr><tr>
-                <td class="rank">14</td>
-                <td class="stock-code">AMD</td>
-                <td class="stock-name">超威半导体</td>
-                <td class="value">3.5</td>
-                <td class="pct">1.30%</td>
-                <td class="pct">165.7万</td>
-            </tr><tr>
-                <td class="rank">15</td>
-                <td class="stock-code">JNJ</td>
-                <td class="stock-name">强生</td>
-                <td class="value">2.7</td>
-                <td class="pct">1.00%</td>
-                <td class="pct">131.4万</td>
-            </tr><tr>
-                <td class="rank">16</td>
-                <td class="stock-code">MU</td>
-                <td class="stock-name">美光科技</td>
-                <td class="value">2.5</td>
-                <td class="pct">0.90%</td>
-                <td class="pct">89.0万</td>
-            </tr><tr>
-                <td class="rank">17</td>
-                <td class="stock-code">MA</td>
-                <td class="stock-name">万事达卡</td>
-                <td class="value">2.3</td>
-                <td class="pct">0.90%</td>
-                <td class="pct">40.9万</td>
-            </tr><tr>
-                <td class="rank">18</td>
-                <td class="stock-code">NEM</td>
-                <td class="stock-name">纽蒙特黄金</td>
-                <td class="value">2.3</td>
-                <td class="pct">0.80%</td>
-                <td class="pct">230.9万</td>
-            </tr><tr>
-                <td class="rank">19</td>
-                <td class="stock-code">WDAY</td>
-                <td class="stock-name">Workday</td>
-                <td class="value">2.1</td>
-                <td class="pct">0.80%</td>
-                <td class="pct">96.5万</td>
-            </tr><tr>
-                <td class="rank">20</td>
-                <td class="stock-code">NOW</td>
-                <td class="stock-name">现在服务</td>
-                <td class="value">2.1</td>
-                <td class="pct">0.70%</td>
-                <td class="pct">133.9万</td>
-            </tr></tbody>
+                        <tbody id="top50-body"></tbody>
                     </table>
                 </div>
                 
@@ -304,147 +164,7 @@
                         <thead>
                             <tr><th>#</th><th>代码</th><th>名称</th><th style="text-align:right">市值(亿$)</th><th style="text-align:right">占比</th><th style="text-align:right">股数(万)</th></tr>
                         </thead>
-                        <tbody id="all-body"><tr>
-                <td class="rank">1</td>
-                <td class="stock-code">SPY</td>
-                <td class="stock-name">标普500ETF-SPDR（SPY）</td>
-                <td class="value">30.4</td>
-                <td class="pct">11.00%</td>
-                <td class="pct">445.5万</td>
-            </tr><tr>
-                <td class="rank">2</td>
-                <td class="stock-code">IVV</td>
-                <td class="stock-name">标普500ETF-iShares（IVV）</td>
-                <td class="value">28.7</td>
-                <td class="pct">11.00%</td>
-                <td class="pct">418.6万</td>
-            </tr><tr>
-                <td class="rank">3</td>
-                <td class="stock-code">NVDA</td>
-                <td class="stock-name">英伟达</td>
-                <td class="value">7.2</td>
-                <td class="pct">2.60%</td>
-                <td class="pct">386.5万</td>
-            </tr><tr>
-                <td class="rank">4</td>
-                <td class="stock-code">LRCX</td>
-                <td class="stock-name">泛林集团</td>
-                <td class="value">5.2</td>
-                <td class="pct">1.90%</td>
-                <td class="pct">304.2万</td>
-            </tr><tr>
-                <td class="rank">5</td>
-                <td class="stock-code">CRM</td>
-                <td class="stock-name">赛富时</td>
-                <td class="value">5.1</td>
-                <td class="pct">1.90%</td>
-                <td class="pct">193.2万</td>
-            </tr><tr>
-                <td class="rank">6</td>
-                <td class="stock-code">GOOGL</td>
-                <td class="stock-name">谷歌A</td>
-                <td class="value">5.0</td>
-                <td class="pct">1.80%</td>
-                <td class="pct">159.1万</td>
-            </tr><tr>
-                <td class="rank">7</td>
-                <td class="stock-code">MSFT</td>
-                <td class="stock-name">微软</td>
-                <td class="value">4.8</td>
-                <td class="pct">1.70%</td>
-                <td class="pct">98.4万</td>
-            </tr><tr>
-                <td class="rank">8</td>
-                <td class="stock-code">AMZN</td>
-                <td class="stock-name">亚马逊</td>
-                <td class="value">4.5</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">194.8万</td>
-            </tr><tr>
-                <td class="rank">9</td>
-                <td class="stock-code">ADBE</td>
-                <td class="stock-name">Adobe</td>
-                <td class="value">4.5</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">127.5万</td>
-            </tr><tr>
-                <td class="rank">10</td>
-                <td class="stock-code">GEV</td>
-                <td class="stock-name">GE Vernova</td>
-                <td class="value">4.4</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">66.6万</td>
-            </tr><tr>
-                <td class="rank">11</td>
-                <td class="stock-code">BKNG</td>
-                <td class="stock-name">Booking Holdings</td>
-                <td class="value">4.3</td>
-                <td class="pct">1.60%</td>
-                <td class="pct">8.1万</td>
-            </tr><tr>
-                <td class="rank">12</td>
-                <td class="stock-code">AVGO</td>
-                <td class="stock-name">博通</td>
-                <td class="value">4.0</td>
-                <td class="pct">1.50%</td>
-                <td class="pct">116.6万</td>
-            </tr><tr>
-                <td class="rank">13</td>
-                <td class="stock-code">ORCL</td>
-                <td class="stock-name">甲骨文</td>
-                <td class="value">3.7</td>
-                <td class="pct">1.30%</td>
-                <td class="pct">187.3万</td>
-            </tr><tr>
-                <td class="rank">14</td>
-                <td class="stock-code">AMD</td>
-                <td class="stock-name">超威半导体</td>
-                <td class="value">3.5</td>
-                <td class="pct">1.30%</td>
-                <td class="pct">165.7万</td>
-            </tr><tr>
-                <td class="rank">15</td>
-                <td class="stock-code">JNJ</td>
-                <td class="stock-name">强生</td>
-                <td class="value">2.7</td>
-                <td class="pct">1.00%</td>
-                <td class="pct">131.4万</td>
-            </tr><tr>
-                <td class="rank">16</td>
-                <td class="stock-code">MU</td>
-                <td class="stock-name">美光科技</td>
-                <td class="value">2.5</td>
-                <td class="pct">0.90%</td>
-                <td class="pct">89.0万</td>
-            </tr><tr>
-                <td class="rank">17</td>
-                <td class="stock-code">MA</td>
-                <td class="stock-name">万事达卡</td>
-                <td class="value">2.3</td>
-                <td class="pct">0.90%</td>
-                <td class="pct">40.9万</td>
-            </tr><tr>
-                <td class="rank">18</td>
-                <td class="stock-code">NEM</td>
-                <td class="stock-name">纽蒙特黄金</td>
-                <td class="value">2.3</td>
-                <td class="pct">0.80%</td>
-                <td class="pct">230.9万</td>
-            </tr><tr>
-                <td class="rank">19</td>
-                <td class="stock-code">WDAY</td>
-                <td class="stock-name">Workday</td>
-                <td class="value">2.1</td>
-                <td class="pct">0.80%</td>
-                <td class="pct">96.5万</td>
-            </tr><tr>
-                <td class="rank">20</td>
-                <td class="stock-code">NOW</td>
-                <td class="stock-name">现在服务</td>
-                <td class="value">2.1</td>
-                <td class="pct">0.70%</td>
-                <td class="pct">133.9万</td>
-            </tr></tbody>
+                        <tbody id="all-body"></tbody>
                     </table>
                 </div>
                 
@@ -456,147 +176,7 @@
                         <thead>
                             <tr><th>代码</th><th>名称</th><th style="text-align:right">Q4市值</th><th style="text-align:right">Q3市值</th><th style="text-align:right">市值变化</th><th style="text-align:right">股数变化</th></tr>
                         </thead>
-                        <tbody id="changes-body"><tr>
-                <td class="stock-code">SPY</td>
-                <td class="stock-name">标普500ETF-SPDR（SPY）</td>
-                <td class="value">30.4</td>
-                <td class="pct">17.1</td>
-                <td class="value change-up">+13.3</td>
-                <td class="pct">+189.0万</td>
-            </tr><tr>
-                <td class="stock-code">MU</td>
-                <td class="stock-name">美光科技</td>
-                <td class="value">2.5</td>
-                <td class="pct">0.0</td>
-                <td class="value change-up">+2.5</td>
-                <td class="pct">+88.8万</td>
-            </tr><tr>
-                <td class="stock-code">NVDA</td>
-                <td class="stock-name">英伟达</td>
-                <td class="value">7.2</td>
-                <td class="pct">4.7</td>
-                <td class="value change-up">+2.5</td>
-                <td class="pct">+135.5万</td>
-            </tr><tr>
-                <td class="stock-code">ORCL</td>
-                <td class="stock-name">甲骨文</td>
-                <td class="value">3.7</td>
-                <td class="pct">1.1</td>
-                <td class="value change-up">+2.5</td>
-                <td class="pct">+146.7万</td>
-            </tr><tr>
-                <td class="stock-code">AMZN</td>
-                <td class="stock-name">亚马逊</td>
-                <td class="value">4.5</td>
-                <td class="pct">2.5</td>
-                <td class="value change-up">+2.0</td>
-                <td class="pct">+82.3万</td>
-            </tr><tr>
-                <td class="stock-code">NEM</td>
-                <td class="stock-name">纽蒙特黄金</td>
-                <td class="value">2.3</td>
-                <td class="pct">0.3</td>
-                <td class="value change-up">+2.0</td>
-                <td class="pct">+192.2万</td>
-            </tr><tr>
-                <td class="stock-code">IVV</td>
-                <td class="stock-name">标普500ETF-iShares（IVV）</td>
-                <td class="value">28.7</td>
-                <td class="pct">27.1</td>
-                <td class="value change-up">+1.6</td>
-                <td class="pct">+13.6万</td>
-            </tr><tr>
-                <td class="stock-code">GOOGL</td>
-                <td class="stock-name">谷歌A</td>
-                <td class="value">5.0</td>
-                <td class="pct">6.5</td>
-                <td class="value change-down">-1.5</td>
-                <td class="pct">-106.3万</td>
-            </tr><tr>
-                <td class="stock-code">AVGO</td>
-                <td class="stock-name">博通</td>
-                <td class="value">4.0</td>
-                <td class="pct">2.8</td>
-                <td class="value change-up">+1.2</td>
-                <td class="pct">+32.0万</td>
-            </tr><tr>
-                <td class="stock-code">MSFT</td>
-                <td class="stock-name">微软</td>
-                <td class="value">4.8</td>
-                <td class="pct">5.7</td>
-                <td class="value change-down">-0.9</td>
-                <td class="pct">-11.3万</td>
-            </tr><tr>
-                <td class="stock-code">NOW</td>
-                <td class="stock-name">现在服务</td>
-                <td class="value">2.1</td>
-                <td class="pct">2.8</td>
-                <td class="value change-down">-0.7</td>
-                <td class="pct">+103.7万</td>
-            </tr><tr>
-                <td class="stock-code">AMD</td>
-                <td class="stock-name">超威半导体</td>
-                <td class="value">3.5</td>
-                <td class="pct">2.9</td>
-                <td class="value change-up">+0.6</td>
-                <td class="pct">-13.8万</td>
-            </tr><tr>
-                <td class="stock-code">LRCX</td>
-                <td class="stock-name">泛林集团</td>
-                <td class="value">5.2</td>
-                <td class="pct">4.6</td>
-                <td class="value change-up">+0.6</td>
-                <td class="pct">-42.2万</td>
-            </tr><tr>
-                <td class="stock-code">JNJ</td>
-                <td class="stock-name">强生</td>
-                <td class="value">2.7</td>
-                <td class="pct">3.2</td>
-                <td class="value change-down">-0.5</td>
-                <td class="pct">-40.2万</td>
-            </tr><tr>
-                <td class="stock-code">WDAY</td>
-                <td class="stock-name">Workday</td>
-                <td class="value">2.1</td>
-                <td class="pct">2.5</td>
-                <td class="value change-down">-0.4</td>
-                <td class="pct">-7.5万</td>
-            </tr><tr>
-                <td class="stock-code">CRM</td>
-                <td class="stock-name">赛富时</td>
-                <td class="value">5.1</td>
-                <td class="pct">4.8</td>
-                <td class="value change-up">+0.4</td>
-                <td class="pct">-7.5万</td>
-            </tr><tr>
-                <td class="stock-code">GEV</td>
-                <td class="stock-name">GE Vernova</td>
-                <td class="value">4.4</td>
-                <td class="pct">4.0</td>
-                <td class="value change-up">+0.3</td>
-                <td class="pct">+1.5万</td>
-            </tr><tr>
-                <td class="stock-code">MA</td>
-                <td class="stock-name">万事达卡</td>
-                <td class="value">2.3</td>
-                <td class="pct">2.1</td>
-                <td class="value change-up">+0.3</td>
-                <td class="pct">+4.3万</td>
-            </tr><tr>
-                <td class="stock-code">BKNG</td>
-                <td class="stock-name">Booking Holdings</td>
-                <td class="value">4.3</td>
-                <td class="pct">4.2</td>
-                <td class="value change-up">+0.1</td>
-                <td class="pct">+0.3万</td>
-            </tr><tr>
-                <td class="stock-code">ADBE</td>
-                <td class="stock-name">Adobe</td>
-                <td class="value">4.5</td>
-                <td class="pct">4.5</td>
-                <td class="value change-up">+0.0</td>
-                <td class="pct">+1.2万</td>
-            </tr></tbody>
+                        <tbody id="changes-body"></tbody>
                     </table>
                 </div>
             </div>
@@ -609,15 +189,15 @@
                 </div>
                 <div class="change-section">
                     <div class="change-section-title" style="color:#e74c3c;">🔼 增持 Top 5</div>
-                    <div id="gain-list"><div class="change-item"><span>标普500ETF-SPDR（SPY）</span><span class="change-up">+$13.3亿</span></div><div class="change-item"><span>美光科技</span><span class="change-up">+$2.5亿</span></div><div class="change-item"><span>英伟达</span><span class="change-up">+$2.5亿</span></div><div class="change-item"><span>甲骨文</span><span class="change-up">+$2.5亿</span></div><div class="change-item"><span>亚马逊</span><span class="change-up">+$2.0亿</span></div></div>
+                    <div id="gain-list"></div>
                 </div>
                 <div class="change-section" style="border-top:1px solid #eee;">
                     <div class="change-section-title" style="color:#27ae60;">🔽 减持 Top 5</div>
-                    <div id="loss-list"><div class="change-item"><span>谷歌A</span><span class="change-down">$-1.5亿</span></div><div class="change-item"><span>微软</span><span class="change-down">$-0.9亿</span></div><div class="change-item"><span>现在服务</span><span class="change-down">$-0.7亿</span></div><div class="change-item"><span>强生</span><span class="change-down">$-0.5亿</span></div><div class="change-item"><span>Workday</span><span class="change-down">$-0.4亿</span></div></div>
+                    <div id="loss-list"></div>
                 </div>
                 <div class="change-desc">
                     <div class="change-desc-title">📝 变动说明</div>
-                    <div id="change-desc-list"><div class="change-desc-item"><span>标普500ETF-SPDR（SPY）</span><span>市值增持</span></div><div class="change-desc-item"><span>美光科技</span><span>小幅调整</span></div><div class="change-desc-item"><span>英伟达</span><span>增持股份</span></div><div class="change-desc-item"><span>甲骨文</span><span>增持股份</span></div><div class="change-desc-item"><span>亚马逊</span><span>小幅调整</span></div><div class="change-desc-item"><span>纽蒙特黄金</span><span>增持股份</span></div><div class="change-desc-item"><span>标普500ETF-iShares（IVV）</span><span>小幅调整</span></div><div class="change-desc-item"><span>谷歌A</span><span>减持股份</span></div></div>
+                    <div id="change-desc-list"></div>
                 </div>
             </div>
         </div>
@@ -851,5 +431,5 @@
             });
         }
     </script>
-
-</body></html>
+</body>
+</html>
